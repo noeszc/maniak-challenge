@@ -2,10 +2,25 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { ThemeProvider } from 'styled-components';
+import FontFaceObserver from 'fontfaceobserver';
 
-import App from 'containers/App';
+import 'sanitize.css/sanitize.css';
+
 import history from 'utils/history';
+import theme from 'utils/theme';
+
+// Import root app
+import App from 'containers/App';
+
 import configureStore from './configureStore';
+
+const robotoFontObserver = new FontFaceObserver('Roboto', {});
+
+// When Roboto is loaded, add a font-family using Roboto to the body
+robotoFontObserver.load().then(() => {
+  document.body.classList.add('font--loaded');
+});
 
 // Create redux store with history
 const initialState = {};
@@ -15,9 +30,11 @@ const MOUNT_NODE = document.getElementById('app');
 const ConnectedApp = ({ Component }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <React.StrictMode>
-        <Component></Component>
-      </React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <React.StrictMode>
+          <Component></Component>
+        </React.StrictMode>
+      </ThemeProvider>
     </ConnectedRouter>
   </Provider>
 );
