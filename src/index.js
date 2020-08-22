@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { ThemeProvider } from 'styled-components';
 import FontFaceObserver from 'fontfaceobserver';
-
-import 'sanitize.css/sanitize.css';
+import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 
 import history from 'utils/history';
 import theme from 'utils/theme';
@@ -33,6 +31,7 @@ const ConnectedApp = ({ Component }) => (
       <ThemeProvider theme={theme}>
         <React.StrictMode>
           <Component></Component>
+          <CSSReset></CSSReset>
         </React.StrictMode>
       </ThemeProvider>
     </ConnectedRouter>

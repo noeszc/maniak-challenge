@@ -26,8 +26,11 @@ export default function configureAppStore(initialState = {}, history) {
 
   const store = configureStore({
     reducer: createReducer(),
-    preloadedState: initialState,
-    middleware: [...getDefaultMiddleware(), ...middlewares],
+    // preloadedState: initialState,
+    middleware: [
+      ...getDefaultMiddleware({ serializableCheck: false }),
+      ...middlewares,
+    ],
     devTools:
       process.env.NODE_ENV !== 'production' ||
       process.env.PUBLIC_URL.length > 0,
