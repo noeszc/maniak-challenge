@@ -7,7 +7,7 @@ import Nav from './Nav';
 
 function Header({ items, ...rest }) {
   return (
-    <Box as="header" bg="white">
+    <Box as="header" bg="white" {...rest}>
       <Container
         {...{
           as: 'nav',

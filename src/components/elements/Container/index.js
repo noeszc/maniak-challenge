@@ -7,7 +7,7 @@ function Container({ children, isFluid, ...rest }) {
       {...{
         position: 'relative',
         width: '100%',
-        maxWidth: '1024px',
+        maxWidth: '1120px',
         marginX: 'auto',
         paddingX: 4,
         ...(isFluid && { maxWidth: '100%' }),
