@@ -4,7 +4,7 @@ export const initialState = {
   menu: { data: null, loading: false, error: false },
 };
 
-const appSlice = createSlice({
+const globalAppManagerSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
@@ -31,6 +31,6 @@ export const {
   loadMenuSuccess,
   loadMenuFailure,
   setMenu,
-} = appSlice.actions;
+} = globalAppManagerSlice.actions;
 
-export const { reducer, actions } = appSlice;
+export const { reducer, actions } = globalAppManagerSlice;

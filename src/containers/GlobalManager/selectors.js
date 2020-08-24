@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { initialState } from './slice';
 
 /**
- * Direct selector to the auth state domain
+ * Direct selector to the App state domain
  */
 const selectAppDomain = (state) => state.app || initialState;
 
@@ -12,7 +12,7 @@ const selectAppDomain = (state) => state.app || initialState;
  */
 
 /**
- * Default selector used by Auth
+ * Default selector used by App
  */
 
 const makeSelectApp = createSelector(selectAppDomain, (substate) => substate);

@@ -13,6 +13,25 @@ const LinkWrapper = styled(ListItem)`
     letter-spacing: 0.3px;
     font-size: 14px;
     color: ${({ theme }) => _.get(theme, 'colors.blue.300')};
+    position: relative;
+    &::before {
+      display: block;
+      content: '';
+      width: 0;
+      height: 4px;
+      position: absolute;
+      top: calc(-2em + 8px); // 0 + offset(h*2)
+      background: transparent;
+      transition: all 150ms ease-in;
+    }
+    &:hover,
+    &.active {
+      text-decoration: none;
+      &:before {
+        width: 100%;
+        background: ${({ theme }) => _.get(theme, 'colors.blue.300')};
+      }
+    }
   }
 `;
 
@@ -51,11 +70,14 @@ function Nav({ items, ...rest }) {
         as: List,
         isInline: true,
         spacing: '58px',
+        align: 'center',
       }}
       {...rest}
     >
       <LinkWrapper>
-        <NavLink to={'/'}>Home</NavLink>
+        <NavLink exact to={'/'}>
+          Home
+        </NavLink>
       </LinkWrapper>
       {_.map(items, ({ id, route, text }) => (
         <LinkWrapper key={`nav-item-${id}`}>

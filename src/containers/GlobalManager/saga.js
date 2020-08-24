@@ -1,24 +1,24 @@
-import fp from 'lodash/fp';
-import { v4 } from 'uuid';
+import _ from 'lodash/fp';
 import { takeLatest, call, put } from 'redux-saga/effects';
+import { v4 } from 'uuid';
+import { loadMenu, loadMenuSuccess, loadMenuFailure, setMenu } from './slice';
 import { getApp } from 'utils/client';
-import { loadMenuSuccess, setMenu, loadMenu, loadMenuFailure } from './slice';
 
 // //////////////////////////////////////////////////////////////////////
 
-const getItems = fp.compose(
-  fp.keyBy('id'),
-  fp.map(({ route, ...rest }) => ({
+const getItems = _.compose(
+  _.keyBy('id'),
+  _.map(({ route, ...rest }) => ({
     ...rest,
     route: process.env.PUBLIC_URL + '/' + route,
     id: v4(),
   })),
-  fp.get('menu.items'),
+  _.get('menu.items'),
 );
 
 // //////////////////////////////////////////////////////////////////////
 
-export function* fetchAppMenu() {
+export function* fetchGlobalMenu() {
   try {
     const response = yield call(getApp);
     yield put(loadMenuSuccess());
@@ -28,6 +28,8 @@ export function* fetchAppMenu() {
   }
 }
 
-export default function* appSaga() {
-  yield takeLatest(loadMenu.type, fetchAppMenu);
+// //////////////////////////////////////////////////////////////////////
+
+export default function* globalAppSaga(params) {
+  yield takeLatest(loadMenu.type, fetchGlobalMenu);
 }
