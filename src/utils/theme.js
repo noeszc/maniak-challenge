@@ -11,6 +11,9 @@ const colors = {
     100: '#f0f2ff',
     300: '#071eb3',
   },
+  gray: {
+    100: '#a5a5a5',
+  },
 };
 
 // //////////////////////////////////////////////////////////////////////
@@ -18,6 +21,7 @@ const colors = {
 const fonts = {
   heading: `'Roboto', sans-serif`,
   body: `'Roboto', sans-serif`,
+  mono: `'Cormorant Garamond', serif`,
 };
 
 // //////////////////////////////////////////////////////////////////////

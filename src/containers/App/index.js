@@ -27,6 +27,14 @@ const Wrapper = styled.div`
 
 // //////////////////////////////////////////////////////////////////////
 
+const IsoContainer = styled(Container)`
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+`;
+
+// //////////////////////////////////////////////////////////////////////
+
 const getComponent = _.cond([
   [_.matches({ route: '/page-1' }), _.constant(TestimonialPage)],
   [_.matches({ route: '/page-2' }), _.constant(ConfiguratorPage)],
@@ -78,9 +86,9 @@ function App() {
           return (
             <React.Fragment>
               <Header items={items}></Header>
-              <Container>
+              <IsoContainer {...{}}>
                 <RouteTree items={items}></RouteTree>
-              </Container>
+              </IsoContainer>
             </React.Fragment>
           );
         }}
