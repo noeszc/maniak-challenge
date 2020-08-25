@@ -75,7 +75,7 @@ InlineStack.defaultProps = { isInline: true };
 
 // //////////////////////////////////////////////////////////////////////
 
-const Calculator = (props) => {
+const Calculator = ({ defaultIngredient, defaultFullTime, ...rest }) => {
   const {
     annualSaving,
     ingredientSpending,
@@ -83,9 +83,13 @@ const Calculator = (props) => {
     handleIngridients,
     handleEmployees,
     foodCostSaving,
-  } = useHandlers();
+  } = useHandlers({
+    ingredientSpending: defaultIngredient,
+    fullTimeEmployees: defaultFullTime,
+  });
+
   return (
-    <Box {...props}>
+    <Box {...rest}>
       <Stack spacing={12} mb={16}>
         <Box>
           <InlineStack mb={4}>
@@ -106,7 +110,6 @@ const Calculator = (props) => {
             }}
           />
         </Box>
-
         <Box>
           <InlineStack mb={4}>
             <Label>

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { testRegex } from 'utils/utils';
 
 export const getfoodCostSaving = (a, n = 0.3) => _.multiply(a, n);
 
@@ -29,3 +30,8 @@ export const getStimatedSavings = ({
     annualSaving,
   };
 };
+
+const DOMAIN_REGEX = /([a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+)/;
+
+export const splitWordByDomain = (str) =>
+  str.split(DOMAIN_REGEX).filter((s) => s !== '');
