@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Spinner, Box, Flex } from '@chakra-ui/core';
+import { Spinner, Box } from '@chakra-ui/core';
 
 import useLoadPage from 'containers/PagesManager/components/useLoadPage';
 import H1 from 'components/elements/H1';
