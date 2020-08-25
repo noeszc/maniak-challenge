@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { testRegex } from 'utils/utils';
 
 export const getfoodCostSaving = (a, n = 0.3) => _.multiply(a, n);
 
